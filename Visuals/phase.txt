@@ -1,0 +1,43 @@
+--------------------Phase 2 : EDA ------------------
+# #pandas 
+# # for basic data exploration
+# # print(df.head())
+# print(df.info()) #check data types &null 
+# print(df.describe()) #summary statistics 
+# print(df.isnull().sum()) #check for missing values
+
+# #visualizations using matplotlib
+# import matplotlib.pyplot as plt 
+# import seaborn as sns
+
+# # # no-show rate distribution 
+# # sns.histplot(df['no_show_rate'],bins=20,kde=True)
+# # plt.title("No-Show Rate Distribution")
+# # plt.xlabel("No-Show Rate")
+# # plt.ylabel("Number of Flights")
+# # plt.show()
+
+# sns.scatterplot(x='capacity' ,y = 'no_show_rate',data = df)
+# plt.title("capacity vs No-Show Rate")
+# plt.show()
+
+# df['route'] = df['origin'] + ' -> ' + df['destination']
+# route_avg = df.groupby('route')['no_show_rate'].mean().sort_values(ascending=False)
+# print(route_avg.head(10)) 
+
+#----------------------Phase 4: Overbooking Optimization-----------------
+# def compute_optimal_overbooking(capacity,predicted_noshow_rate,buffer=1.0) :
+#     adjusted_rate = buffer* (predicted_noshow_rate/100)
+#     safe_ticket_to_sell = capacity/ (1-adjusted_rate)
+#     return int(safe_ticket_to_sell)
+
+# capacity = 650
+# predicted_noshow = 7.44
+# optimal_ticket = compute_optimal_overbooking(capacity,predicted_noshow,buffer=0.9)
+# print(f" Capacity: {capacity}")
+# print(f"Predicted No-SHow Rate: {predicted_noshow:.2f}%")
+# print(f"Safe Ticket to Sell (with 90% buffer): {optimal_ticket}")
+# print(f"OVerbooking Margin : {optimal_ticket-capacity} seats")
+
+
+#-------------------Phase 5 : Business Decision-Making & Strategy ---------------------->
